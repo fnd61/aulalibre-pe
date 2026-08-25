@@ -213,6 +213,7 @@ button,input,select,textarea{font:inherit}
 .contact-addresses a:hover strong,.contact-addresses a:focus-visible strong{color:var(--teal-bright)}
 .contact-addresses strong{font-size:.95rem;transition:color .15s ease}
 .contact-addresses span{color:#9fb2c8;font-size:.9rem}
+.contact-routing{max-width:54ch;margin:18px 0 0;color:#9fb2c8;font-size:.9rem;line-height:1.6}
 .contact-form{padding:36px 34px;color:var(--ink);background:#fff;border-radius:var(--radius)}
 .contact-form label{display:block;color:var(--navy);font-size:.88rem;font-weight:600}
 .contact-form label+label{margin-top:18px}
