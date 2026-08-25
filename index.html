@@ -65,7 +65,7 @@
       <a href="#cursos">Cursos</a>
       <a href="#docentes">Docentes</a>
       <a href="#propuestas-docentes">Proponer un curso</a>
-      <a class="nav-cta" href="#contacto">Contacto</a>
+      <a class="nav-cta" href="#contacto">Inscribirme</a>
     </nav>
   </div>
 </header>
@@ -80,8 +80,8 @@
         <h1>Conocimiento para pensar <em>con libertad</em></h1>
         <p class="hero-text">Cursos virtuales de Humanidades, Ciencias Sociales y Derecho, dirigidos a quienes buscan comprender el mundo con rigor, pensamiento crítico y apertura al diálogo.</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="#cursos">Ver cursos</a>
-          <a class="button button-ghost" href="#clase-abierta">Clase abierta gratuita</a>
+          <a class="button button-primary" href="#contacto">Inscribirme gratis</a>
+          <a class="button button-ghost" href="#cursos">Ver cursos</a>
         </div>
         <ul class="hero-features" aria-label="Características principales">
           <li>Clases virtuales en vivo</li>
@@ -98,7 +98,7 @@
           <div><dt>Fecha</dt><dd>1 de setiembre de 2026 · 8:00 p. m.</dd></div>
           <div><dt>Docentes</dt><dd>F. Núñez · M. Vásquez</dd></div>
         </dl>
-        <a class="hero-card-link" href="#clase-abierta">Conocer la clase abierta<span aria-hidden="true"> →</span></a>
+        <a class="hero-card-link" href="#contacto">Reservar mi cupo gratuito<span aria-hidden="true"> →</span></a>
       </aside>
     </div>
   </section>
@@ -172,11 +172,12 @@
             <li>Acceso gratuito</li>
             <li>1 de setiembre de 2026 · 8:00 p. m.</li>
           </ul>
+          <p class="featured-note">Clase gratuita en vivo, con espacio para preguntas y conversación al final de la sesión.</p>
           <div class="featured-teachers">
             <div><strong>Francisco Núñez Díaz</strong><span>Historia política, ciudadanía y democracia</span></div>
             <div><strong>Mario A. Vásquez Cohello</strong><span>Estado, filosofía política y derecho</span></div>
           </div>
-          <a class="button button-light" href="#contacto">Quiero recibir la invitación</a>
+          <a class="button button-light" href="#contacto">Reservar mi cupo gratuito</a>
         </div>
         <aside class="featured-panel">
           <p class="featured-panel-label">Temas de la sesión</p>
@@ -361,8 +362,8 @@
     <div class="container contact-grid">
       <div class="contact-copy">
         <p class="eyebrow eyebrow-light">Contacto</p>
-        <h2>Conversemos sobre cursos, propuestas y consultas</h2>
-        <p class="contact-intro">Completa el formulario o escribe directamente al área correspondiente.</p>
+        <h2>Inscríbete a la clase abierta o escríbenos por los cursos</h2>
+        <p class="contact-intro">Completa el formulario para recibir la invitación a la sesión gratuita y novedades de los próximos cursos.</p>
         <div class="contact-addresses" aria-label="Correos de contacto de Aula Libre">
           <a href="mailto:contacto@aulalibre.pe"><strong>Contacto general</strong><span>contacto@aulalibre.pe</span></a>
           <a href="mailto:cursos@aulalibre.pe?subject=Consulta%20sobre%20cursos"><strong>Cursos e inscripciones</strong><span>cursos@aulalibre.pe</span></a>
@@ -374,14 +375,14 @@
           <a href="https://www.instagram.com/aulalibrepe" aria-label="Aula Libre en Instagram"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor" stroke="none"></circle></svg><span>@aulalibrepe</span></a>
         </div>
       </div>
-      <form action="/gracias" class="contact-form" method="POST" name="interesados-aula-libre">
+      <form action="/gracias" class="contact-form" method="POST" name="interesados-aula-libre" data-netlify="true" netlify-honeypot="campo-trampa">
         <input type="hidden" name="form-name" value="interesados-aula-libre">
         <p class="hidden-field"><label>No completes este campo: <input name="campo-trampa"></label></p>
         <label>Nombre<input type="text" name="nombre" autocomplete="name" required=""></label>
         <label>Correo electrónico<input type="email" name="correo" autocomplete="email" required=""></label>
-        <label>Área de interés<select name="area"><option value="Humanidades">Humanidades</option><option value="Ciencias Sociales">Ciencias Sociales</option><option value="Derecho">Derecho</option><option value="Propuesta docente">Propuesta de curso</option><option value="Todas">Todas las áreas</option></select></label>
+        <label>Área de interés<select name="area"><option value="Clase abierta gratuita">Clase abierta gratuita</option><option value="Humanidades">Humanidades</option><option value="Ciencias Sociales">Ciencias Sociales</option><option value="Derecho">Derecho</option><option value="Propuesta docente">Propuesta de curso</option><option value="Todas">Todas las áreas</option></select></label>
         <label>Mensaje <span>(opcional)</span><textarea name="mensaje" rows="4"></textarea></label>
-        <button class="button button-form" type="submit">Quiero recibir información</button>
+        <button class="button button-form" type="submit">Enviar inscripción</button>
         <p class="form-note">Al enviar el formulario aceptas que Aula Libre use estos datos únicamente para responder tu consulta o informarte sobre sus cursos, según nuestra <a href="/privacidad">política de privacidad</a>.</p>
       </form>
     </div>
