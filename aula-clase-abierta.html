@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="description" content="Aula virtual de la clase abierta de Aula Libre.">
+<meta name="theme-color" content="#071a38">
+<title>Aula virtual | Clase abierta Aula Libre</title>
+<link rel="icon" href="assets/favicon-48.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preload" href="assets/fonts/spectral-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:Inter;font-style:normal;font-weight:100 900;font-display:swap;src:url("assets/fonts/inter-latin-wght-normal.woff2") format("woff2")}
+@font-face{font-family:Spectral;font-style:normal;font-weight:600;font-display:swap;src:url("assets/fonts/spectral-latin-600-normal.woff2") format("woff2")}
+:root{--ink:#14243a;--navy:#0a2858;--deep:#071a38;--teal:#12868c;--bright:#37c2c8;--muted:#5a6a80;--paper:#f6f8fa;--line:#d9e2ea;--white:#fff;--serif:Spectral,Georgia,"Times New Roman",serif;--sans:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;--radius:10px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--ink);background:var(--paper);font-family:var(--sans);line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+button,input{font:inherit}
+.container{width:min(calc(100% - 40px),1120px);margin-inline:auto}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}
+.topbar-inner{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:block;width:min(240px,46vw)}
+.back-link{color:var(--navy);font-size:.9rem;font-weight:700;text-decoration:none}
+.back-link:hover{text-decoration:underline;text-underline-offset:4px}
+.hero{color:#fff;background:linear-gradient(140deg,var(--deep),#0d315f);border-bottom:1px solid rgba(255,255,255,.12)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(290px,.58fr);gap:56px;align-items:center;padding:68px 0 74px}
+.eyebrow{margin:0 0 16px;color:var(--bright);font-size:.74rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase}
+h1,h2,h3,p{margin-top:0}
+h1{margin-bottom:18px;font-family:var(--serif);font-size:clamp(2.35rem,5vw,4.35rem);line-height:1.05;font-weight:600}
+.hero-copy p:not(.eyebrow){max-width:62ch;color:#c2d2e5;font-size:1.06rem}
+.hero-meta{display:grid;gap:0;margin:30px 0 0;padding:0;list-style:none;border-top:1px solid rgba(255,255,255,.16)}
+.hero-meta li{display:flex;justify-content:space-between;gap:18px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.16);font-size:.94rem}
+.hero-meta strong{color:#fff}
+.status-card{padding:30px 28px;background:#fff;color:var(--ink);border-radius:var(--radius);box-shadow:0 24px 60px rgba(0,0,0,.18)}
+.status-card h2{margin:0 0 12px;color:var(--deep);font-family:var(--serif);font-size:1.65rem;line-height:1.18}
+.status-card p{color:var(--muted);font-size:.95rem}
+.access-form{display:grid;gap:12px;margin-top:20px}
+.access-form label{color:var(--navy);font-size:.88rem;font-weight:800}
+.access-row{display:flex;gap:10px}
+.access-row input{min-width:0;flex:1;padding:12px 13px;border:1px solid #c6d4e0;border-radius:8px;outline:none}
+.access-row input:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(18,134,140,.15)}
+.button{display:inline-flex;min-height:48px;align-items:center;justify-content:center;padding:0 20px;color:#fff;background:var(--navy);border:0;border-radius:8px;font-weight:800;text-decoration:none;cursor:pointer}
+.button:hover,.button:focus-visible{background:var(--teal)}
+.button-light{color:var(--deep);background:#fff;border:1px solid var(--line)}
+.button-light:hover,.button-light:focus-visible{color:#fff;background:var(--teal)}
+.error{display:none;margin:0;color:#9d1c1c;font-size:.86rem;font-weight:700}
+.locked-note{margin:16px 0 0;color:#718198;font-size:.86rem}
+.main{padding:54px 0 76px}
+.aula-shell{display:none}
+.aula-shell.is-open{display:block}
+.locked-shell.is-hidden{display:none}
+.toolbar{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:24px}
+.toolbar h2{margin:0;color:var(--deep);font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.5rem);line-height:1.1}
+.toolbar-actions{display:flex;gap:10px;flex-wrap:wrap}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:26px;align-items:start}
+.panel,.side-panel{background:#fff;border:1px solid var(--line);border-radius:var(--radius)}
+.panel{padding:30px}
+.panel+.panel{margin-top:22px}
+.panel h3,.side-panel h3{margin:0 0 14px;color:var(--deep);font-family:var(--serif);font-size:1.45rem;line-height:1.2}
+.muted{color:var(--muted)}
+.notice{padding:18px 20px;color:var(--deep);background:#eef8f8;border-left:4px solid var(--teal);border-radius:0 8px 8px 0}
+.meeting-box{display:grid;gap:16px;margin-top:18px}
+.meeting-link{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px 20px;color:#fff;background:var(--deep);border-radius:var(--radius)}
+.meeting-link strong{display:block}
+.meeting-link span{color:#c3d2e3;font-size:.9rem}
+.disabled-link{opacity:.72}
+.resource-list,.protocol-list,.timeline{margin:0;padding:0;list-style:none}
+.resource-list li,.protocol-list li{padding:15px 0;border-top:1px solid var(--line)}
+.resource-list li:first-child,.protocol-list li:first-child{border-top:0}
+.resource-list a{color:var(--navy);font-weight:800;text-decoration:none}
+.resource-list a:hover{text-decoration:underline;text-underline-offset:4px}
+.tag{display:inline-flex;margin-left:8px;padding:2px 8px;color:var(--teal);background:#eaf7f7;border-radius:999px;font-size:.72rem;font-weight:800}
+.side-panel{padding:24px}
+.side-panel+.side-panel{margin-top:22px}
+.timeline li{display:grid;grid-template-columns:92px 1fr;gap:12px;padding:13px 0;border-top:1px solid var(--line)}
+.timeline li:first-child{border-top:0}
+.timeline time{color:var(--teal);font-size:.82rem;font-weight:900}
+.support-card{color:#fff;background:var(--deep);border-color:var(--deep)}
+.support-card h3{color:#fff}
+.support-card p{color:#c3d2e3}
+.support-card a{color:var(--bright);font-weight:800;text-decoration:none}
+.footer{padding:32px 0;color:#8fa0b7;background:#04122a;font-size:.88rem}
+.footer a{color:#c5d7e8;text-decoration:none}
+.footer a:hover{text-decoration:underline;text-underline-offset:4px}
+@media (max-width:900px){.hero-grid,.grid{grid-template-columns:1fr}.hero-grid{padding:48px 0}.toolbar{align-items:flex-start;flex-direction:column}.meeting-link{align-items:flex-start;flex-direction:column}.access-row{flex-direction:column}.side{display:grid;grid-template-columns:1fr 1fr;gap:22px}.side-panel+.side-panel{margin-top:0}}
+@media (max-width:640px){.container{width:min(calc(100% - 30px),1120px)}.topbar-inner{min-height:68px}.hero-meta li,.timeline li{grid-template-columns:1fr}.panel,.side-panel,.status-card{padding:22px}.side{display:block}.side-panel+.side-panel{margin-top:18px}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="container topbar-inner">
+    <a class="brand" href="/" aria-label="Aula Libre, página de inicio">
+      <picture>
+        <source srcset="assets/logo-aula-libre.webp" type="image/webp">
+        <img src="assets/logo-aula-libre.png" alt="Logo de Aula Libre" width="1148" height="270">
+      </picture>
+    </a>
+    <a class="back-link" href="/">Volver al sitio</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Aula virtual · Clase abierta</p>
+        <h1>¿Qué nos dejaron las elecciones de 2026?</h1>
+        <p>Espacio de acceso para participantes inscritos. Aquí estarán las indicaciones de ingreso, materiales previos, enlace de la sesión y recursos posteriores.</p>
+        <ul class="hero-meta" aria-label="Datos principales de la clase">
+          <li><span>Fecha</span><strong>1 de setiembre de 2026</strong></li>
+          <li><span>Hora</span><strong>8:00 p. m. Perú</strong></li>
+          <li><span>Modalidad</span><strong>Zoom con sala de espera</strong></li>
+        </ul>
+      </div>
+
+      <section class="status-card locked-shell" aria-labelledby="access-title">
+        <p class="eyebrow">Acceso de prueba</p>
+        <h2 id="access-title">Ingresa la clave enviada a tu correo</h2>
+        <p>Este prototipo usa una clave por clase. El enlace de Zoom no debe compartirse públicamente.</p>
+        <form class="access-form" id="access-form">
+          <label for="access-code">Clave de acceso</label>
+          <div class="access-row">
+            <input id="access-code" name="access-code" type="password" autocomplete="off" placeholder="Ej. AulaLibre-2026-Set">
+            <button class="button" type="submit">Entrar</button>
+          </div>
+          <p class="error" id="access-error">La clave no coincide. Revisa el correo de confirmación o escribe a contacto@aulalibre.pe.</p>
+        </form>
+        <p class="locked-note">Clave de prototipo: <strong>AulaLibre-2026-Set</strong>. Luego podemos cambiarla antes de usarla con participantes reales.</p>
+      </section>
+    </div>
+  </section>
+
+  <section class="main">
+    <div class="container aula-shell" id="aula-shell" aria-live="polite">
+      <div class="toolbar">
+        <div>
+          <p class="eyebrow">Panel del participante</p>
+          <h2>Aula de la clase abierta</h2>
+        </div>
+        <div class="toolbar-actions">
+          <button class="button button-light" type="button" id="lock-again">Cerrar acceso</button>
+          <a class="button" href="mailto:contacto@aulalibre.pe?subject=Soporte%20aula%20virtual">Soporte</a>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div>
+          <section class="panel">
+            <h3>Ingreso a la sesión</h3>
+            <p class="notice">El enlace de Zoom se enviará solo a registros aprobados y se publicará aquí pocas horas antes de la clase.</p>
+            <div class="meeting-box">
+              <div class="meeting-link disabled-link" aria-label="Enlace de Zoom pendiente">
+                <div>
+                  <strong>Zoom: enlace pendiente</strong>
+                  <span>Se activará el 1 de setiembre de 2026, antes de la sesión.</span>
+                </div>
+                <span>8:00 p. m.</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel">
+            <h3>Materiales previos</h3>
+            <p class="muted">Puedes colocar aquí lecturas, diapositivas o enlaces no listados. Por ahora dejamos ejemplos de estructura.</p>
+            <ul class="resource-list">
+              <li><a href="#" aria-disabled="true">Guía de lectura breve</a><span class="tag">Próximamente</span></li>
+              <li><a href="#" aria-disabled="true">Programa de la sesión</a><span class="tag">Próximamente</span></li>
+              <li><a href="#" aria-disabled="true">Bibliografía recomendada</a><span class="tag">Próximamente</span></li>
+            </ul>
+          </section>
+
+          <section class="panel">
+            <h3>Reglas de participación</h3>
+            <ul class="protocol-list">
+              <li>Ingresa con el nombre completo usado en el formulario de inscripción.</li>
+              <li>La sala de espera estará activada; el equipo admitirá según lista de inscritos.</li>
+              <li>Los micrófonos permanecerán apagados al ingresar.</li>
+              <li>Las preguntas se recibirán por chat o en el bloque final, según indique la moderación.</li>
+              <li>Quienes interrumpan la sesión podrán ser retirados sin aviso adicional.</li>
+            </ul>
+          </section>
+
+          <section class="panel">
+            <h3>Grabación y recursos posteriores</h3>
+            <p class="muted">Después de la clase, este espacio puede alojar la grabación, materiales complementarios y avisos sobre próximos cursos.</p>
+          </section>
+        </div>
+
+        <aside class="side" aria-label="Información de la clase">
+          <section class="side-panel">
+            <h3>Cronograma</h3>
+            <ul class="timeline">
+              <li><time>7:45 p. m.</time><span>Apertura de sala de espera.</span></li>
+              <li><time>8:00 p. m.</time><span>Inicio de la clase abierta.</span></li>
+              <li><time>9:15 p. m.</time><span>Preguntas y conversación final.</span></li>
+              <li><time>9:30 p. m.</time><span>Cierre de sesión.</span></li>
+            </ul>
+          </section>
+
+          <section class="side-panel">
+            <h3>Control de ingreso</h3>
+            <p class="muted">El equipo puede usar la lista de inscritos para verificar nombre, correo, institución y celular antes de admitir desde la sala de espera.</p>
+          </section>
+
+          <section class="side-panel support-card">
+            <h3>Soporte</h3>
+            <p>Si tienes problemas de acceso, escribe desde el correo con el que te registraste.</p>
+            <a href="mailto:contacto@aulalibre.pe?subject=Soporte%20aula%20virtual">contacto@aulalibre.pe</a>
+          </section>
+        </aside>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    Aula Libre · Aula virtual de prueba · <a href="/privacidad">Política de privacidad</a>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const ACCESS_CODE = "AulaLibre-2026-Set";
+  const form = document.querySelector("#access-form");
+  const input = document.querySelector("#access-code");
+  const error = document.querySelector("#access-error");
+  const locked = document.querySelector(".locked-shell");
+  const aula = document.querySelector("#aula-shell");
+  const lockAgain = document.querySelector("#lock-again");
+  const storageKey = "aulalibre_aula_clase_abierta";
+
+  const openAula = () => {
+    locked.classList.add("is-hidden");
+    aula.classList.add("is-open");
+  };
+
+  const closeAula = () => {
+    localStorage.removeItem(storageKey);
+    aula.classList.remove("is-open");
+    locked.classList.remove("is-hidden");
+    input.value = "";
+    input.focus();
+  };
+
+  if (localStorage.getItem(storageKey) === "ok") openAula();
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (input.value.trim() === ACCESS_CODE) {
+      localStorage.setItem(storageKey, "ok");
+      error.style.display = "none";
+      openAula();
+    } else {
+      error.style.display = "block";
+      input.select();
+    }
+  });
+
+  lockAgain.addEventListener("click", closeAula);
+})();
+</script>
+</body>
+</html>
