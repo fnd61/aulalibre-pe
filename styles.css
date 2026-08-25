@@ -1,0 +1,319 @@
+/* ==========================================================================
+   Aula Libre — v20 «Cátedra»
+   Dirección: editorial académico. Serifa Spectral para las preguntas,
+   Inter para el cuerpo, líneas finas tipo programa de curso.
+   Paleta de marca: azul marino + turquesa del logotipo.
+   ========================================================================== */
+
+@font-face{font-family:Inter;font-style:normal;font-weight:100 900;font-display:swap;src:url("assets/fonts/inter-latin-wght-normal.woff2") format("woff2")}
+@font-face{font-family:Spectral;font-style:normal;font-weight:500;font-display:swap;src:url("assets/fonts/spectral-latin-500-normal.woff2") format("woff2")}
+@font-face{font-family:Spectral;font-style:italic;font-weight:500;font-display:swap;src:url("assets/fonts/spectral-latin-500-italic.woff2") format("woff2")}
+@font-face{font-family:Spectral;font-style:normal;font-weight:600;font-display:swap;src:url("assets/fonts/spectral-latin-600-normal.woff2") format("woff2")}
+
+:root{
+  --ink:#14243a;
+  --navy:#0a2858;
+  --navy-deep:#071a38;
+  --teal:#12868c;        /* accesible sobre blanco */
+  --teal-bright:#37c2c8; /* sobre fondos oscuros */
+  --muted:#5a6a80;
+  --paper:#f6f8fa;
+  --line:#d9e2ea;
+  --line-dark:rgba(255,255,255,.16);
+  --white:#fff;
+  --serif:Spectral,Georgia,"Times New Roman",serif;
+  --sans:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --container:1140px;
+  --radius:10px;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:104px}
+body{margin:0;color:var(--ink);background:var(--white);font-family:var(--sans);font-size:1rem;line-height:1.7;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+button,input,select,textarea{font:inherit}
+.container{width:min(calc(100% - 48px),var(--container));margin-inline:auto}
+
+/* ---------- utilidades ---------- */
+.skip-link{position:fixed;left:18px;top:-80px;z-index:100;padding:12px 16px;color:#fff;background:var(--navy-deep);border-radius:8px;text-decoration:none}
+.skip-link:focus{top:18px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+
+.eyebrow{margin:0 0 18px;color:var(--teal);font-size:.74rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+.eyebrow-light{color:var(--teal-bright)}
+
+/* ---------- cabecera ---------- */
+.site-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}
+.header-inner{min-height:86px;display:flex;align-items:center;justify-content:space-between;gap:32px}
+.brand{display:block;width:min(290px,44vw)}
+.brand img{width:100%}
+.main-nav{display:flex;align-items:center;gap:28px;color:var(--navy);font-size:.93rem;font-weight:600}
+.main-nav a{text-decoration:none;padding:8px 0;border-bottom:2px solid transparent;transition:color .15s ease,border-color .15s ease}
+.main-nav a:hover,.main-nav a:focus-visible{color:var(--teal);border-bottom-color:var(--teal)}
+.main-nav .nav-cta{padding:9px 20px;color:#fff;background:var(--navy);border:0;border-radius:var(--radius)}
+.main-nav .nav-cta:hover,.main-nav .nav-cta:focus-visible{color:#fff;background:var(--teal)}
+.menu-button{display:none;width:46px;height:42px;padding:9px;background:transparent;border:1px solid var(--line);border-radius:8px;cursor:pointer}
+.menu-button span:not(.sr-only){display:block;height:2px;margin:5px 0;background:var(--navy);border-radius:999px}
+
+/* ---------- botones ---------- */
+.button{display:inline-flex;min-height:50px;align-items:center;justify-content:center;padding:0 26px;border:1px solid transparent;border-radius:var(--radius);font-weight:600;text-decoration:none;cursor:pointer;transition:background-color .15s ease,border-color .15s ease,color .15s ease}
+.button-primary{color:#fff;background:var(--navy)}
+.button-primary:hover,.button-primary:focus-visible{background:var(--teal)}
+.button-ghost{color:var(--navy);background:transparent;border-color:var(--navy)}
+.button-ghost:hover,.button-ghost:focus-visible{color:var(--teal);border-color:var(--teal)}
+.button-light{color:var(--navy-deep);background:#fff}
+.button-light:hover,.button-light:focus-visible{background:var(--teal-bright);color:var(--navy-deep)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#fff 0%,var(--paper) 100%);overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(180deg,transparent 0 46px,rgba(10,40,88,.045) 46px 47px);pointer-events:none}
+.hero::after{content:"";position:absolute;top:-220px;right:-180px;width:640px;height:640px;background:radial-gradient(circle,rgba(55,194,200,.14),transparent 62%);pointer-events:none}
+.hero-grid{position:relative;z-index:1}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(320px,.72fr);gap:72px;align-items:center;padding:96px 0 104px}
+.hero h1{margin:0;max-width:15ch;color:var(--navy-deep);font-family:var(--serif);font-weight:600;font-size:clamp(2.9rem,5.6vw,4.9rem);line-height:1.06;letter-spacing:-.015em}
+.hero h1 em{font-style:italic;font-weight:500;color:var(--teal)}
+.hero-text{max-width:56ch;margin:26px 0 0;color:var(--muted);font-size:clamp(1.05rem,1.7vw,1.2rem)}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px}
+.hero-features{display:flex;flex-wrap:wrap;gap:10px 28px;margin:36px 0 0;padding:22px 0 0;border-top:1px solid var(--line);list-style:none;color:var(--navy);font-size:.9rem;font-weight:600}
+.hero-features li{position:relative;padding-left:16px}
+.hero-features li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:6px;background:var(--teal);border-radius:50%}
+
+/* tarjeta del hero: anuncio real de la clase abierta */
+.hero-card{position:relative;padding:38px 36px 34px;color:#fff;background:var(--navy-deep);border-radius:var(--radius);overflow:hidden}
+.hero-card::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:linear-gradient(90deg,var(--teal-bright),transparent 70%)}
+.hero-card-label{margin:0 0 16px;color:var(--teal-bright);font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+.hero-card-title{margin:0;font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(1.5rem,2.4vw,1.9rem);line-height:1.25}
+.hero-card-sub{margin:14px 0 0;color:#b9c9dc;font-size:.95rem}
+.hero-card-meta{display:grid;gap:0;margin:26px 0 0}
+.hero-card-meta div{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-top:1px solid var(--line-dark)}
+.hero-card-meta dt{margin:0;color:#8fa3bd;font-size:.82rem}
+.hero-card-meta dd{margin:0;font-size:.86rem;font-weight:600;text-align:right}
+.hero-card-link{display:inline-block;margin-top:24px;color:var(--teal-bright);font-size:.9rem;font-weight:600;text-decoration:none}
+.hero-card-link:hover,.hero-card-link:focus-visible{text-decoration:underline;text-underline-offset:4px}
+
+/* ---------- secciones ---------- */
+.section{padding:96px 0}
+.section-paper{background:var(--paper);border-block:1px solid var(--line)}
+.section-dark{color:#fff;background:var(--navy-deep)}
+.section-head{max-width:760px;margin-bottom:56px}
+.section h2{margin:0;color:var(--navy-deep);font-family:var(--serif);font-weight:600;font-size:clamp(1.9rem,3.4vw,2.9rem);line-height:1.15;letter-spacing:-.01em}
+.section-dark h2{color:#fff}
+.section-intro{margin:18px 0 0;color:var(--muted);font-size:1.05rem}
+.section-dark .section-intro{color:#b9c9dc}
+
+/* ---------- propuesta (manifiesto) ---------- */
+.manifesto{padding:88px 0}
+.manifesto-grid{display:grid;grid-template-columns:220px minmax(0,1fr);gap:48px;align-items:start}
+.manifesto-grid .eyebrow{margin:6px 0 0;padding-top:14px;border-top:2px solid var(--teal)}
+.manifesto-lead{margin:0;color:var(--navy-deep);font-family:var(--serif);font-weight:500;font-size:clamp(1.35rem,2.4vw,1.8rem);line-height:1.45}
+.manifesto-body p:not(.manifesto-lead){margin:22px 0 0;max-width:64ch;color:var(--muted);font-size:1.05rem}
+
+/* ---------- áreas ---------- */
+.area-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px}
+.area-card{padding-top:22px;border-top:2px solid var(--navy)}
+.area-card h3{margin:0;color:var(--navy-deep);font-family:var(--serif);font-weight:600;font-size:1.45rem}
+.area-card>p{margin:12px 0 0;color:var(--muted);font-size:.98rem}
+.area-card ul{margin:20px 0 0;padding:0;list-style:none;color:var(--ink);font-size:.92rem}
+.area-card li{position:relative;padding:7px 0 7px 18px;border-top:1px solid var(--line)}
+.area-card li::before{content:"";position:absolute;left:0;top:1.05em;width:6px;height:6px;background:var(--teal);border-radius:50%}
+
+/* ---------- clase abierta ---------- */
+.featured{padding:96px 0;color:#fff;background:var(--navy-deep)}
+.featured-visual{display:block;margin-bottom:56px;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line-dark)}
+.featured-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(300px,.66fr);gap:64px;align-items:start}
+.featured h2{margin:0;max-width:18ch;color:#fff;font-family:var(--serif);font-weight:600;font-size:clamp(2.2rem,4.4vw,3.6rem);line-height:1.1;letter-spacing:-.015em}
+.featured-sub{margin:18px 0 0;color:var(--teal-bright);font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(1.15rem,2vw,1.45rem);line-height:1.35}
+.featured-desc{max-width:60ch;margin:22px 0 0;color:#c3d2e3;font-size:1.04rem}
+.featured-meta{display:flex;flex-wrap:wrap;gap:8px 26px;margin:28px 0 0;padding:0;list-style:none;color:#dbe6f1;font-size:.88rem;font-weight:600}
+.featured-meta li{position:relative;padding-left:15px}
+.featured-meta li::before{content:"";position:absolute;left:0;top:.6em;width:6px;height:6px;background:var(--teal-bright);border-radius:50%}
+.featured-teachers{display:grid;gap:14px;margin:30px 0 0;padding:24px 0;border-block:1px solid var(--line-dark)}
+.featured-teachers div{display:flex;flex-direction:column;gap:2px}
+.featured-teachers strong{font-size:.98rem}
+.featured-teachers span{color:#9fb2c8;font-size:.88rem}
+.featured .button-light{margin-top:30px}
+.featured-panel{padding:32px 30px;background:rgba(255,255,255,.05);border:1px solid var(--line-dark);border-radius:var(--radius)}
+.featured-panel-label{margin:0 0 18px;color:var(--teal-bright);font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+.featured-topics{margin:0;padding:0;list-style:none;counter-reset:tema}
+.featured-topics li{counter-increment:tema;display:flex;gap:14px;padding:11px 0;border-top:1px solid var(--line-dark);color:#dbe6f1;font-size:.94rem}
+.featured-topics li::before{content:counter(tema);flex:0 0 auto;color:var(--teal-bright);font-family:var(--serif);font-weight:600}
+.featured-question{margin-top:26px;padding:20px 22px;background:rgba(55,194,200,.08);border-left:3px solid var(--teal-bright);border-radius:0 8px 8px 0}
+.featured-question span{display:block;margin-bottom:8px;color:var(--teal-bright);font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+.featured-question p{margin:0;font-family:var(--serif);font-style:italic;font-weight:500;font-size:1.08rem;line-height:1.45}
+
+/* ---------- cursos ---------- */
+.course-list{display:grid;gap:56px}
+.course{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:0;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#fff;transition:box-shadow .25s ease,transform .25s ease}
+.course:hover{box-shadow:0 22px 55px rgba(6,27,61,.1);transform:translateY(-3px)}
+.course:nth-child(even){grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)}
+.course:nth-child(even) .course-visual{order:2}
+.course-visual{min-height:100%;background:var(--paper)}
+.course-visual{overflow:hidden}
+.course-visual img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.course:hover .course-visual img{transform:scale(1.03)}
+.course-body{padding:44px 46px}
+.course-tags{margin:0 0 20px;color:var(--teal);font-size:.74rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.course h3{margin:0;color:var(--navy-deep);font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(1.7rem,2.8vw,2.3rem);line-height:1.15}
+.course-sub{margin:14px 0 0;color:var(--navy);font-size:1.02rem;font-weight:600;line-height:1.5}
+.course-desc{margin:16px 0 0;color:var(--muted);font-size:.98rem}
+.course-meta{display:grid;margin:26px 0 0}
+.course-meta div{display:grid;grid-template-columns:110px 1fr;gap:16px;padding:9px 0;border-top:1px solid var(--line);font-size:.9rem}
+.course-meta dt{margin:0;color:var(--muted)}
+.course-meta dd{margin:0;color:var(--ink);font-weight:600}
+.course-topics{margin:20px 0 0;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:.86rem;line-height:1.7}
+.course-link{display:inline-block;margin-top:22px;color:var(--teal);font-size:.94rem;font-weight:700;text-decoration:none}
+.course-link span{display:inline-block;transition:transform .2s ease}
+.course-link:hover,.course-link:focus-visible{text-decoration:underline;text-underline-offset:4px}
+.course-link:hover span,.course-link:focus-visible span{transform:translateX(4px)}
+
+/* ---------- metodología ---------- */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:36px;margin:0;padding:0;list-style:none;counter-reset:paso}
+.steps li{counter-increment:paso;padding-top:20px;border-top:1px solid var(--line-dark)}
+.steps li::before{content:counter(paso,decimal-leading-zero);display:block;margin-bottom:16px;color:var(--teal-bright);font-family:var(--serif);font-weight:600;font-size:1.3rem}
+.steps h3{margin:0;color:#fff;font-family:var(--serif);font-weight:600;font-size:1.25rem}
+.steps p{margin:10px 0 0;color:#b9c9dc;font-size:.94rem}
+
+/* ---------- docentes ---------- */
+.faculty-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px}
+.faculty-card{padding:40px 42px 44px;border:1px solid var(--line);border-top:2px solid var(--teal);border-radius:var(--radius);background:#fff;transition:box-shadow .25s ease,transform .25s ease}
+.faculty-card:hover{box-shadow:0 18px 45px rgba(6,27,61,.09);transform:translateY(-3px)}
+.faculty-photo{display:block;width:124px;height:124px;margin:0 0 26px;border-radius:50%;overflow:hidden;background:var(--paper);box-shadow:0 0 0 1px var(--line)}
+.faculty-photo img{width:100%;height:100%;object-fit:cover;object-position:center 18%}
+.faculty-content{padding:0}
+.faculty-role{margin:0 0 12px;color:var(--teal);font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.faculty-content h3{margin:0;color:var(--navy-deep);font-family:var(--serif);font-weight:600;font-size:clamp(1.5rem,2.4vw,1.9rem);line-height:1.2}
+.faculty-content p:not(.faculty-role){margin:16px 0 0;color:var(--muted);font-size:.95rem}
+.faculty-content cite{font-family:var(--serif);font-style:italic}
+
+/* ---------- convocatoria ---------- */
+.teacher-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(300px,.65fr);gap:72px;align-items:start}
+.teacher-lead{margin:22px 0 0;color:var(--navy-deep);font-family:var(--serif);font-weight:500;font-size:1.25rem;line-height:1.5}
+.teacher-copy>p:not(.eyebrow):not(.teacher-lead){margin:18px 0 0;max-width:60ch;color:var(--muted)}
+.teacher-actions{display:flex;flex-direction:column;gap:12px;margin-top:32px;align-items:flex-start}
+.teacher-actions span{color:var(--muted);font-size:.9rem}
+.teacher-panel{padding:32px 30px;background:#fff;border:1px solid var(--line);border-radius:var(--radius)}
+.teacher-panel-label{margin:0 0 16px;color:var(--teal);font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+.teacher-panel ul{margin:0;padding:0;list-style:none;font-size:.93rem}
+.teacher-panel li{position:relative;padding:9px 0 9px 18px;border-top:1px solid var(--line)}
+.teacher-panel li::before{content:"";position:absolute;left:0;top:1.15em;width:6px;height:6px;background:var(--teal);border-radius:50%}
+.teacher-note{margin-top:24px;padding:18px 20px;background:var(--paper);border-left:3px solid var(--teal);border-radius:0 8px 8px 0}
+.teacher-note strong{display:block;margin-bottom:6px;color:var(--navy-deep);font-size:.9rem}
+.teacher-note p{margin:0;color:var(--muted);font-size:.88rem}
+
+/* ---------- contacto ---------- */
+.contact{padding:96px 0;color:#fff;background:linear-gradient(160deg,var(--navy),var(--navy-deep))}
+.contact-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(340px,.7fr);gap:80px;align-items:start}
+.contact h2{margin:0;color:#fff;font-family:var(--serif);font-weight:600;font-size:clamp(1.9rem,3.4vw,2.9rem);line-height:1.15}
+.contact-intro{max-width:52ch;margin:18px 0 0;color:#c3d2e3;font-size:1.04rem}
+.contact-addresses{display:grid;gap:0;margin-top:34px}
+.contact-addresses a{display:flex;flex-direction:column;gap:2px;padding:16px 0;color:#fff;text-decoration:none;border-top:1px solid var(--line-dark);transition:color .15s ease}
+.contact-addresses a:hover strong,.contact-addresses a:focus-visible strong{color:var(--teal-bright)}
+.contact-addresses strong{font-size:.95rem;transition:color .15s ease}
+.contact-addresses span{color:#9fb2c8;font-size:.9rem}
+.contact-form{padding:36px 34px;color:var(--ink);background:#fff;border-radius:var(--radius)}
+.contact-form label{display:block;color:var(--navy);font-size:.88rem;font-weight:600}
+.contact-form label+label{margin-top:18px}
+.contact-form label span{color:var(--muted);font-weight:400}
+.contact-form input,.contact-form select,.contact-form textarea{width:100%;margin-top:7px;padding:12px 13px;color:var(--ink);background:#fff;border:1px solid #c5d2df;border-radius:8px;outline:none;transition:border-color .15s ease,box-shadow .15s ease}
+.contact-form input:focus,.contact-form select:focus,.contact-form textarea:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(18,134,140,.14)}
+.contact-form textarea{resize:vertical}
+.button-form{width:100%;margin-top:24px;color:#fff;background:var(--navy)}
+.button-form:hover,.button-form:focus-visible{background:var(--teal)}
+.form-note{margin:14px 0 0;color:var(--muted);font-size:.76rem;line-height:1.55}
+.form-note a{color:var(--teal)}
+.hidden-field{position:absolute;left:-9999px}
+
+/* ---------- pie ---------- */
+.site-footer{padding:44px 0;color:#93a5bb;background:#04122a;font-size:.9rem}
+.footer-grid{display:flex;justify-content:space-between;gap:40px}
+.site-footer strong{color:#fff;font-family:var(--serif);font-weight:600;font-size:1.05rem}
+.site-footer p{margin:6px 0 0}
+.footer-contact{text-align:right}
+.site-footer a{color:#bfd0e2;text-decoration:none}
+.site-footer a:hover,.site-footer a:focus-visible{color:#fff;text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- páginas auxiliares (gracias / 404) ---------- */
+.thanks-page{min-height:100vh;display:grid;place-items:center;padding:40px;background:linear-gradient(160deg,var(--navy),var(--navy-deep))}
+.thanks-card{width:min(100%,660px);padding:52px 48px;text-align:center;background:#fff;border-radius:var(--radius)}
+.thanks-card img{width:min(280px,80%);margin:0 auto 30px}
+.thanks-card h1{margin:0;color:var(--navy-deep);font-family:var(--serif);font-weight:600;font-size:clamp(2rem,6vw,3.2rem);line-height:1.1}
+.thanks-card p{margin:20px auto 0;max-width:50ch;color:var(--muted);font-size:1.05rem}
+.thanks-card .button{margin-top:32px}
+
+/* prosa auxiliar (privacidad) */
+.prose p{margin:0;color:var(--muted);font-size:1.02rem}
+.prose p+p{margin-top:18px}
+.prose strong{color:var(--navy-deep)}
+.prose a{color:var(--teal)}
+.muted-note{padding:16px 20px;color:var(--navy);background:var(--paper);border-left:3px solid var(--teal);border-radius:0 8px 8px 0}
+.section-label{margin:0 0 15px;color:var(--teal);font-size:.74rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+
+/* ---------- animación de entrada (solo hero) ---------- */
+@media (prefers-reduced-motion:no-preference){
+  .hero-copy,.hero-card{animation:rise .7s ease both}
+  .hero-card{animation-delay:.15s}
+  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+}
+
+/* ---------- responsivo ---------- */
+@media (max-width:980px){
+  .menu-button{display:block}
+  .main-nav{position:absolute;left:0;right:0;top:100%;display:none;padding:16px 20px 22px;flex-direction:column;align-items:stretch;gap:2px;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 18px 30px rgba(6,27,61,.1)}
+  .main-nav.is-open{display:flex}
+  .main-nav a,.main-nav .nav-cta{padding:12px 8px;text-align:left;border-radius:8px;border-bottom:0}
+  .main-nav .nav-cta{margin-top:8px;padding-inline:14px;text-align:center}
+  .hero-grid{grid-template-columns:1fr;gap:44px;padding:64px 0 72px}
+  .manifesto-grid{grid-template-columns:1fr;gap:22px}
+  .manifesto-grid .eyebrow{margin:0}
+  .area-grid{grid-template-columns:1fr;gap:32px}
+  .featured-grid{grid-template-columns:1fr;gap:44px}
+  .course,.course:nth-child(even){grid-template-columns:1fr}
+  .course:nth-child(even) .course-visual{order:0}
+  .course-visual{aspect-ratio:16/9;min-height:auto}
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .faculty-grid{grid-template-columns:1fr}
+  .teacher-grid{grid-template-columns:1fr;gap:44px}
+  .contact-grid{grid-template-columns:1fr;gap:48px}
+}
+
+@media (max-width:620px){
+  html{scroll-padding-top:84px}
+  .container{width:min(calc(100% - 32px),var(--container))}
+  .header-inner{min-height:74px}
+  .brand{width:210px}
+  .hero-grid{padding:52px 0 60px}
+  .hero-actions .button{width:100%}
+  .hero-card{padding:28px 24px}
+  .section,.featured,.contact{padding:68px 0}
+  .manifesto{padding:60px 0}
+  .course-body{padding:30px 24px}
+  .course-meta div{grid-template-columns:96px 1fr}
+  .steps{grid-template-columns:1fr;gap:28px}
+  .faculty-card{padding:28px 26px 32px}
+  .contact-form{padding:26px 22px}
+  .footer-grid{flex-direction:column;gap:22px}
+  .footer-contact{text-align:left}
+  .thanks-card{padding:36px 26px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}
+}
+
+/* ---------- redes sociales ---------- */
+.contact-social{display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;margin-top:30px;padding-top:22px;border-top:1px solid var(--line-dark)}
+.contact-social p{margin:0;color:#8fa3bd;font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.contact-social a{display:inline-flex;align-items:center;gap:9px;color:#dbe6f1;font-size:.92rem;font-weight:600;text-decoration:none;transition:color .15s ease}
+.contact-social a:hover,.contact-social a:focus-visible{color:var(--teal-bright)}
+.footer-social{display:flex;align-items:center;gap:14px}
+.footer-social a{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;color:#bfd0e2;border:1px solid rgba(255,255,255,.18);border-radius:50%;transition:color .15s ease,border-color .15s ease,background-color .15s ease}
+.footer-social a:hover,.footer-social a:focus-visible{color:#fff;border-color:var(--teal-bright);background:rgba(55,194,200,.12)}
+
+/* ---------- aparición al hacer scroll ---------- */
+@media (prefers-reduced-motion:no-preference){
+  html.js .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+  html.js .reveal.in-view{opacity:1;transform:none}
+}
