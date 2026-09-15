@@ -24,7 +24,7 @@
   --serif:Spectral,Georgia,"Times New Roman",serif;
   --sans:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
   --container:1140px;
-  --radius:10px;
+  --radius:8px;
 }
 
 *{box-sizing:border-box}
@@ -67,13 +67,13 @@ button,input,select,textarea{font:inherit}
 .button-light:hover,.button-light:focus-visible{background:var(--teal-bright);color:var(--navy-deep)}
 
 /* ---------- hero ---------- */
-.hero{position:relative;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#fff 0%,var(--paper) 100%);overflow:hidden}
-.hero::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(180deg,transparent 0 46px,rgba(10,40,88,.045) 46px 47px);pointer-events:none}
-.hero::after{content:"";position:absolute;top:-220px;right:-180px;width:640px;height:640px;background:radial-gradient(circle,rgba(55,194,200,.14),transparent 62%);pointer-events:none}
+.hero{position:relative;border-bottom:1px solid var(--line);background:var(--paper);overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;border-block:6px solid rgba(10,40,88,.025);pointer-events:none}
 .hero-grid{position:relative;z-index:1}
 .hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(320px,.72fr);gap:72px;align-items:center;padding:96px 0 104px}
-.hero h1{margin:0;max-width:15ch;color:var(--navy-deep);font-family:var(--serif);font-weight:600;font-size:clamp(2.9rem,5.6vw,4.9rem);line-height:1.06;letter-spacing:-.015em}
+.hero h1{margin:0;max-width:15ch;color:var(--navy-deep);font-family:var(--serif);font-weight:600;font-size:clamp(2.9rem,5.6vw,4.9rem);line-height:1.06;letter-spacing:0}
 .hero h1 em{font-style:italic;font-weight:500;color:var(--teal)}
+.hero-kicker{margin:18px 0 0;color:var(--teal);font-family:var(--serif);font-size:clamp(1.35rem,2.4vw,1.8rem);font-style:italic;font-weight:500;line-height:1.3}
 .hero-text{max-width:56ch;margin:26px 0 0;color:var(--muted);font-size:clamp(1.05rem,1.7vw,1.2rem)}
 .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px}
 .hero-features{display:flex;flex-wrap:wrap;gap:10px 28px;margin:36px 0 0;padding:22px 0 0;border-top:1px solid var(--line);list-style:none;color:var(--navy);font-size:.9rem;font-weight:600}
@@ -98,7 +98,7 @@ button,input,select,textarea{font:inherit}
 .section-paper{background:var(--paper);border-block:1px solid var(--line)}
 .section-dark{color:#fff;background:var(--navy-deep)}
 .section-head{max-width:760px;margin-bottom:56px}
-.section h2{margin:0;color:var(--navy-deep);font-family:var(--serif);font-weight:600;font-size:clamp(1.9rem,3.4vw,2.9rem);line-height:1.15;letter-spacing:-.01em}
+.section h2{margin:0;color:var(--navy-deep);font-family:var(--serif);font-weight:600;font-size:clamp(1.9rem,3.4vw,2.9rem);line-height:1.15;letter-spacing:0}
 .section-dark h2{color:#fff}
 .section-intro{margin:18px 0 0;color:var(--muted);font-size:1.05rem}
 .section-dark .section-intro{color:#b9c9dc}
@@ -123,7 +123,7 @@ button,input,select,textarea{font:inherit}
 .featured{padding:96px 0;color:#fff;background:var(--navy-deep)}
 .featured-visual{display:block;margin-bottom:56px;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line-dark)}
 .featured-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(300px,.66fr);gap:64px;align-items:start}
-.featured h2{margin:0;max-width:18ch;color:#fff;font-family:var(--serif);font-weight:600;font-size:clamp(2.2rem,4.4vw,3.6rem);line-height:1.1;letter-spacing:-.015em}
+.featured h2{margin:0;max-width:18ch;color:#fff;font-family:var(--serif);font-weight:600;font-size:clamp(2.2rem,4.4vw,3.6rem);line-height:1.1;letter-spacing:0}
 .featured-sub{margin:18px 0 0;color:var(--teal-bright);font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(1.15rem,2vw,1.45rem);line-height:1.35}
 .featured-desc{max-width:60ch;margin:22px 0 0;color:#c3d2e3;font-size:1.04rem}
 .featured-meta{display:flex;flex-wrap:wrap;gap:8px 26px;margin:28px 0 0;padding:0;list-style:none;color:#dbe6f1;font-size:.88rem;font-weight:600}
@@ -214,6 +214,7 @@ button,input,select,textarea{font:inherit}
 .contact-addresses strong{font-size:.95rem;transition:color .15s ease}
 .contact-addresses span{color:#9fb2c8;font-size:.9rem}
 .contact-routing{max-width:54ch;margin:18px 0 0;color:#9fb2c8;font-size:.9rem;line-height:1.6}
+.contact-course-button{margin-top:28px}
 .contact-form{padding:36px 34px;color:var(--ink);background:#fff;border-radius:var(--radius)}
 .contact-form label{display:block;color:var(--navy);font-size:.88rem;font-weight:600}
 .contact-form label+label{margin-top:18px}
@@ -242,6 +243,9 @@ button,input,select,textarea{font:inherit}
 .thanks-card img{width:min(280px,80%);margin:0 auto 30px}
 .thanks-card h1{margin:0;color:var(--navy-deep);font-family:var(--serif);font-weight:600;font-size:clamp(2rem,6vw,3.2rem);line-height:1.1}
 .thanks-card p{margin:20px auto 0;max-width:50ch;color:var(--muted);font-size:1.05rem}
+.thanks-card p strong{color:var(--navy-deep)}
+.thanks-card .thanks-help{font-size:.94rem}
+.thanks-card .thanks-help a{color:var(--teal)}
 .thanks-card .button{margin-top:32px}
 
 /* prosa auxiliar (privacidad) */
@@ -252,6 +256,81 @@ button,input,select,textarea{font:inherit}
 .prose a{color:var(--teal)}
 .muted-note{padding:16px 20px;color:var(--navy);background:var(--paper);border-left:3px solid var(--teal);border-radius:0 8px 8px 0}
 .section-label{margin:0 0 15px;color:var(--teal);font-size:.74rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+
+/* ---------- curso: Poder, élites e ideologías ---------- */
+.course-hero{padding:88px 0 0;color:#fff;background:var(--navy-deep)}
+.course-hero-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(300px,.62fr);gap:84px;align-items:end}
+.course-hero-copy{padding-bottom:68px}
+.course-hero h1{margin:0;max-width:11ch;color:#fff;font-family:var(--serif);font-size:clamp(3.1rem,6.8vw,5.7rem);font-weight:600;letter-spacing:0;line-height:.98}
+.course-hero-question{margin:20px 0 0;color:var(--teal-bright);font-family:var(--serif);font-size:clamp(1.45rem,2.8vw,2.15rem);font-style:italic;line-height:1.25}
+.course-hero-lead{max-width:58ch;margin:26px 0 0;color:#c5d5e5;font-size:1.08rem}
+.course-hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:20px 28px;margin-top:34px}
+.button-course{color:var(--navy-deep);background:var(--teal-bright)}
+.button-course:hover,.button-course:focus-visible{background:#fff}
+.course-text-link{color:#fff;font-size:.92rem;font-weight:700;text-decoration:none}
+.course-text-link:hover,.course-text-link:focus-visible{color:var(--teal-bright);text-decoration:underline;text-underline-offset:4px}
+.course-hero-aside{align-self:end}
+.course-portrait{display:block;aspect-ratio:4/5;overflow:hidden;border:1px solid var(--line-dark);border-bottom:0;border-radius:8px 8px 0 0;background:#e7ebef}
+.course-portrait img{width:100%;height:100%;object-fit:cover;object-position:center 18%}
+.course-portrait-label{margin:22px 0 0;color:var(--teal-bright);font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.course-hero-aside h2{margin:3px 0 0;color:#fff;font-family:var(--serif);font-size:1.55rem;font-weight:600;line-height:1.2}
+.course-hero-aside>p:last-child{margin:7px 0 30px;color:#9fb2c8;font-size:.9rem}
+.course-facts{display:grid;grid-template-columns:1.15fr 1fr 1.2fr .55fr;border-block:1px solid var(--line-dark)}
+.course-facts div{min-width:0;padding:22px 24px;border-left:1px solid var(--line-dark)}
+.course-facts div:first-child{padding-left:0;border-left:0}
+.course-facts span{display:block;margin-bottom:4px;color:#8fa3bd;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.course-facts strong{display:block;color:#fff;font-size:.88rem;line-height:1.45}
+
+.course-purpose-grid{display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1.1fr);gap:80px;align-items:start}
+.course-purpose-copy>p{margin:0;color:var(--muted);font-size:1.04rem}
+.course-purpose-copy>p+p{margin-top:18px}
+.course-outcomes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 30px;margin:30px 0 0;padding:0;list-style:none}
+.course-outcomes li{position:relative;padding:12px 0 12px 19px;border-top:1px solid var(--line);color:var(--navy);font-size:.92rem;font-weight:600}
+.course-outcomes li::before{content:"";position:absolute;left:0;top:1.3em;width:7px;height:7px;border:2px solid var(--teal);border-radius:50%}
+
+.session-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:46px 56px;margin:0;padding:0;list-style:none;counter-reset:sesion}
+.session{counter-increment:sesion;padding-top:24px;border-top:3px solid var(--navy)}
+.session-heading>span{display:block;color:var(--teal);font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.session-heading h3{margin:13px 0 0;color:var(--navy-deep);font-family:var(--serif);font-size:clamp(1.5rem,2.5vw,2rem);font-weight:600;line-height:1.18}
+.session-heading p{margin:5px 0 0;color:var(--navy);font-weight:700}
+.session>ul{margin:22px 0 0;padding:0;list-style:none}
+.session>ul li{position:relative;padding:8px 0 8px 18px;border-top:1px solid var(--line);color:var(--muted);font-size:.91rem}
+.session>ul li::before{content:"";position:absolute;left:0;top:1.15em;width:6px;height:6px;background:var(--teal);border-radius:50%}
+
+.course-teacher-grid{display:grid;grid-template-columns:minmax(260px,.48fr) minmax(0,1fr);gap:72px;align-items:center}
+.course-teacher-photo{display:block;aspect-ratio:4/5;overflow:hidden;border-radius:8px;background:var(--paper)}
+.course-teacher-photo img{width:100%;height:100%;object-fit:cover;object-position:center 18%}
+.course-teacher h2{margin:0;color:var(--navy-deep);font-family:var(--serif);font-size:clamp(2rem,4vw,3.1rem);font-weight:600;line-height:1.12}
+.course-teacher .teacher-lead{margin-top:24px}
+.course-teacher-grid>div>p:not(.eyebrow):not(.teacher-lead){margin:18px 0 0;color:var(--muted)}
+.course-teacher cite{font-family:var(--serif)}
+
+.course-enrollment{padding:96px 0;color:#fff;background:#0b364c}
+.enrollment-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(340px,.7fr);gap:80px;align-items:start}
+.enrollment-copy h2{margin:0;color:#fff;font-family:var(--serif);font-size:clamp(2.2rem,4.2vw,3.5rem);font-weight:600;letter-spacing:0;line-height:1.08}
+.enrollment-copy>p:not(.eyebrow){max-width:52ch;margin:20px 0 0;color:#c7d7df}
+.price-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin-top:34px;border-block:1px solid var(--line-dark)}
+.price-list div{padding:21px 22px;border-left:1px solid var(--line-dark)}
+.price-list div:first-child{padding-left:0;border-left:0}
+.price-list span{display:block;color:#9db8c5;font-size:.75rem;font-weight:700;text-transform:uppercase}
+.price-list strong{display:block;margin-top:2px;color:#fff;font-family:var(--serif);font-size:2.1rem;font-weight:600}
+.enrollment-notes{margin:28px 0 0;padding:0;list-style:none;color:#dbe8ed;font-size:.92rem;font-weight:600}
+.enrollment-notes li{position:relative;padding:7px 0 7px 18px}
+.enrollment-notes li::before{content:"";position:absolute;left:0;top:1.05em;width:7px;height:7px;background:var(--teal-bright);border-radius:50%}
+.enrollment-form{box-shadow:0 22px 60px rgba(0,0,0,.16)}
+.form-check{display:flex!important;align-items:flex-start;gap:10px}
+.form-check input{flex:0 0 auto;width:18px!important;height:18px;margin:3px 0 0!important}
+.form-check span{line-height:1.5}
+
+.faq-grid{display:grid;grid-template-columns:minmax(250px,.55fr) minmax(0,1fr);gap:72px;align-items:start}
+.faq-list{border-top:1px solid var(--line)}
+.faq-list details{border-bottom:1px solid var(--line)}
+.faq-list summary{position:relative;padding:22px 42px 22px 0;color:var(--navy-deep);font-weight:700;cursor:pointer;list-style:none}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary::after{content:"+";position:absolute;right:4px;top:18px;color:var(--teal);font-family:var(--serif);font-size:1.5rem;font-weight:600}
+.faq-list details[open] summary::after{content:"−"}
+.faq-list p{margin:-4px 44px 22px 0;color:var(--muted);font-size:.94rem}
+.faq-list a{color:var(--teal)}
 
 /* ---------- animación de entrada (solo hero) ---------- */
 @media (prefers-reduced-motion:no-preference){
@@ -279,6 +358,17 @@ button,input,select,textarea{font:inherit}
   .faculty-grid{grid-template-columns:1fr}
   .teacher-grid{grid-template-columns:1fr;gap:44px}
   .contact-grid{grid-template-columns:1fr;gap:48px}
+  .course-hero{padding-top:64px}
+  .course-hero-grid{grid-template-columns:1fr;gap:18px}
+  .course-hero-copy{padding-bottom:30px}
+  .course-hero-aside{display:grid;grid-template-columns:180px minmax(0,1fr);grid-template-rows:auto auto 1fr;gap:0 24px;align-items:start}
+  .course-portrait{grid-row:1/4}
+  .course-portrait-label{margin-top:12px}
+  .course-hero-aside>p:last-child{margin-bottom:20px}
+  .course-facts{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:34px}
+  .course-facts div:nth-child(3){padding-left:0;border-left:0}
+  .course-purpose-grid,.course-teacher-grid,.enrollment-grid,.faq-grid{grid-template-columns:1fr;gap:44px}
+  .course-teacher-photo{width:min(360px,100%)}
 }
 
 @media (max-width:620px){
@@ -296,6 +386,24 @@ button,input,select,textarea{font:inherit}
   .steps{grid-template-columns:1fr;gap:28px}
   .faculty-card{padding:28px 26px 32px}
   .contact-form{padding:26px 22px}
+  .course-hero{padding-top:46px}
+  .course-hero h1{font-size:clamp(2.8rem,16vw,4.4rem)}
+  .course-hero-actions .button{width:100%}
+  .course-hero-aside{grid-template-columns:108px minmax(0,1fr);gap:0 17px}
+  .course-hero-aside h2{font-size:1.2rem}
+  .course-hero-aside>p:last-child{font-size:.8rem;line-height:1.45}
+  .course-facts{grid-template-columns:1fr;margin-top:24px}
+  .course-facts div,.course-facts div:nth-child(3){padding:18px 0;border-left:0;border-top:1px solid var(--line-dark)}
+  .course-facts div:first-child{border-top:0}
+  .course-purpose-grid{gap:28px}
+  .course-outcomes{grid-template-columns:1fr}
+  .session-list{grid-template-columns:1fr;gap:36px}
+  .course-teacher-grid{gap:32px}
+  .course-enrollment{padding:68px 0}
+  .price-list{grid-template-columns:1fr}
+  .price-list div,.price-list div:first-child{padding:18px 0;border-left:0;border-top:1px solid var(--line-dark)}
+  .price-list div:first-child{border-top:0}
+  .faq-grid{gap:28px}
   .footer-grid{flex-direction:column;gap:22px}
   .footer-contact{text-align:left}
   .thanks-card{padding:36px 26px}
