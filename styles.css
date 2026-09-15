@@ -93,6 +93,29 @@ button,input,select,textarea{font:inherit}
 .hero-card-link{display:inline-block;margin-top:24px;color:var(--teal-bright);font-size:.9rem;font-weight:600;text-decoration:none}
 .hero-card-link:hover,.hero-card-link:focus-visible{text-decoration:underline;text-underline-offset:4px}
 
+/* ---------- cursos abiertos en portada ---------- */
+.courses-hero{padding:56px 0 80px;border-bottom:1px solid var(--line);background:var(--paper)}
+.open-courses-head{max-width:1000px;margin-bottom:32px}
+.open-courses-head h1{margin:0;color:var(--navy-deep);font-family:var(--serif);font-weight:600;font-size:clamp(3rem,5vw,4.35rem);line-height:1.02;letter-spacing:0}
+.open-courses-head>p:last-child{max-width:67ch;margin:16px 0 0;color:var(--muted);font-size:1.08rem}
+.open-courses-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;scroll-margin-top:104px}
+.open-course-card{display:grid;grid-template-rows:auto 1fr;min-width:0;background:#fff;border:1px solid var(--line);border-top:4px solid var(--teal);border-radius:var(--radius);overflow:hidden;transition:box-shadow .25s ease,transform .25s ease}
+.open-course-card:hover{box-shadow:0 22px 55px rgba(6,27,61,.1);transform:translateY(-3px)}
+.open-course-visual{display:block;aspect-ratio:12/5;overflow:hidden;background:#e8eef2}
+.open-course-visual img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.open-course-card:hover .open-course-visual img{transform:scale(1.025)}
+.open-course-content{display:flex;flex-direction:column;padding:30px 32px 34px}
+.open-course-tag{margin:0 0 14px;color:var(--teal);font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase}
+.open-course-card h2{margin:0;color:var(--navy-deep);font-family:var(--serif);font-weight:600;font-size:clamp(2rem,3.4vw,2.8rem);line-height:1.08;letter-spacing:0}
+.open-course-question{margin:13px 0 0;color:var(--teal);font-family:var(--serif);font-size:1.2rem;font-style:italic;font-weight:500;line-height:1.35}
+.open-course-teacher{margin:17px 0 0;color:var(--navy);font-size:.95rem;font-weight:700}
+.open-course-meta{display:grid;margin:24px 0 0;border-top:1px solid var(--line)}
+.open-course-meta div{display:grid;grid-template-columns:76px 1fr;gap:14px;padding:10px 0;border-bottom:1px solid var(--line);font-size:.88rem}
+.open-course-meta dt{color:var(--muted)}
+.open-course-meta dd{margin:0;color:var(--ink);font-weight:650}
+.open-course-detail{margin:18px 0 24px;color:var(--muted);font-size:.86rem;line-height:1.6}
+.open-course-content .button{align-self:flex-start;margin-top:auto}
+
 /* ---------- secciones ---------- */
 .section{padding:96px 0}
 .section-paper{background:var(--paper);border-block:1px solid var(--line)}
@@ -345,8 +368,9 @@ button,input,select,textarea{font:inherit}
 
 /* ---------- animación de entrada (solo hero) ---------- */
 @media (prefers-reduced-motion:no-preference){
-  .hero-copy,.hero-card{animation:rise .7s ease both}
-  .hero-card{animation-delay:.15s}
+  .hero-copy,.hero-card,.open-courses-head,.open-course-card{animation:rise .7s ease both}
+  .hero-card,.open-course-card:nth-child(1){animation-delay:.1s}
+  .open-course-card:nth-child(2){animation-delay:.2s}
   @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 }
 
@@ -358,6 +382,7 @@ button,input,select,textarea{font:inherit}
   .main-nav a,.main-nav .nav-cta{padding:12px 8px;text-align:left;border-radius:8px;border-bottom:0}
   .main-nav .nav-cta{margin-top:8px;padding-inline:14px;text-align:center}
   .hero-grid{grid-template-columns:1fr;gap:44px;padding:64px 0 72px}
+  .open-courses-grid{grid-template-columns:1fr;max-width:720px}
   .manifesto-grid{grid-template-columns:1fr;gap:22px}
   .manifesto-grid .eyebrow{margin:0}
   .area-grid{grid-template-columns:1fr;gap:32px}
@@ -388,6 +413,12 @@ button,input,select,textarea{font:inherit}
   .header-inner{min-height:74px}
   .brand{width:210px}
   .hero-grid{padding:52px 0 60px}
+  .courses-hero{padding:52px 0 64px}
+  .open-courses-head{margin-bottom:30px}
+  .open-course-content{padding:26px 22px 28px}
+  .open-course-visual{aspect-ratio:16/9}
+  .open-course-meta div{grid-template-columns:70px 1fr}
+  .open-course-content .button{width:100%}
   .hero-actions .button{width:100%}
   .hero-card{padding:28px 24px}
   .section,.featured,.contact{padding:68px 0}
